@@ -1,0 +1,39 @@
+--Create a donut store database
+
+CREATE TABLE danos_donuts (id INTEGER PRIMARY KEY, donut TEXT, calories INTEGER, price REAL, vegan_friendly TEXT);
+
+INSERT INTO danos_donuts VALUES 
+(1, "jam donut", 250, 3.99, "Yes"),
+(2, "strawberry", 300, 3.99, "Yes"),
+(3, "chocolate", 350, 3.99, "No"),
+(4, "vanilla", 500, 2.99, "No"),
+(5, "sprinkled", 500, 2.99, "No"),
+(6, "simpsons", 1000, 8.99, "Yes"),
+(7, "choc chip", 350, 4.99, "No"),
+(8, "glazed", 750, 10.99, "Yes"),
+(9, "custard", 400, 3.99, "No"),
+(10, "M&Ms", 385, 4.99, "Yes"),
+(11, "Cadbury", 410, 5.99, "Yes"),
+(12, "Oreo", 525, 6.99, "Yes"),
+(13, "twix", 420, 3.99, "No"),
+(14, "cherry", 200, 2.99, "No"),
+(15, "sweetie", 250, 3.99, "Yes");
+
+--display the database ordered by price.
+SELECT * FROM danos_donuts
+ORDER BY price ASC;
+
+--what is the avg price of items in the vegan section?
+SELECT AVG(price) FROM danos_donuts
+WHERE vegan_friendly = "Yes";
+
+--what types of donuts are greater than or equal to 250 calories? ordered by calories in ascending order
+SELECT * FROM danos_donuts
+WHERE calories >=250
+ORDER BY calories ASC
+LIMIT 10;
+
+--what are the 5 donuts with the highest amount of calories?
+SELECT donut, calories FROM danos_donuts
+ORDER BY calories DESC
+LIMIT 5;
