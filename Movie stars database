@@ -1,0 +1,62 @@
+CREATE TABLE stars (id INTEGER PRIMARY KEY AUTOINCREMENT,
+fullname TEXT,
+age INTEGER);
+
+INSERT INTO stars(fullname, age) VALUES ("Leonardo Dicaprio", 47);
+INSERT INTO stars(fullname, age) VALUES ("Al Pacino", 82);
+INSERT INTO stars(fullname, age) VALUES ("Robert Deniro", 79);
+INSERT INTO stars(fullname, age) VALUES ("Brad Pitt", 58);
+INSERT INTO stars(fullname, age) VALUES ("Denzel Washington", 67);
+INSERT INTO stars(fullname, age) VALUES ("Ben Afflick", 50);
+INSERT INTO stars(fullname, age) VALUES ("Jennifer Garner", 50);
+INSERT INTO stars(fullname, age) VALUES ("Angelina Jolie", 47);
+INSERT INTO stars(fullname, age) VALUES ("Channing Tatum", 42);
+INSERT INTO stars(fullname, age) VALUES ("Miley Cyrus", 29);
+INSERT INTO stars(fullname, age) VALUES ("Jenna Dawen", 41);
+INSERT INTO stars(fullname, age) VALUES ("Liam Hemsworth", 32);
+INSERT INTO stars(fullname, age) VALUES ("Russel Crowe", 58);
+INSERT INTO stars(fullname, age) VALUES ("Nicole Kidman", 55);
+INSERT INTO stars(fullname, age) VALUES ("Tom Cruise", 60);
+
+
+CREATE TABLE Movies (id INTEGER PRIMARY KEY AUTOINCREMENT,
+star_id INTEGER,
+movie TEXT);
+
+INSERT INTO Movies(star_id, movie) VALUES (1, "Titanic");
+INSERT INTO Movies(star_id, movie) VALUES (2, "Scarface");
+INSERT INTO Movies(star_id, movie) VALUES (1, "Django Unchained");
+INSERT INTO Movies(star_id, movie) VALUES (5, "Training Day");
+INSERT INTO Movies(star_id, movie) VALUES (3, "Godfather");
+INSERT INTO Movies(star_id, movie) VALUES (3, "Goodfellas");
+INSERT INTO Movies(star_id, movie) VALUES (4, "Brat Pitt");
+INSERT INTO Movies(star_id, movie) VALUES (6, "Good will hunting");
+INSERT INTO Movies(star_id, movie) VALUES (7, "yes day");
+INSERT INTO Movies(star_id, movie) VALUES (8, "Tomb Raider");
+INSERT INTO Movies(star_id, movie) VALUES (9, "Coach Carter");
+INSERT INTO Movies(star_id, movie) VALUES (13, "Gladiator");
+INSERT INTO Movies(star_id, movie) VALUES (15, "Thunder");
+INSERT INTO Movies(star_id, movie) VALUES (14, "Thunder");
+
+
+CREATE TABLE couples (id INTEGER PRIMARY KEY AUTOINCREMENT,
+person1_id INTEGER,
+person2_id INTEGER);
+
+INSERT INTO couples(person1_id, person2_id) VALUES (4, 8);
+INSERT INTO couples(person1_id, person2_id) VALUES (6, 7);
+INSERT INTO couples(person1_id, person2_id) VALUES (12, 10);
+INSERT INTO couples(person1_id, person2_id) VALUES (9, 11);
+INSERT INTO couples(person1_id, person2_id) VALUES (15, 14);
+
+---using a JOIN to display star's names with the movies they starred in
+SELECT s.fullname, m.movie FROM stars s
+JOIN Movies m ON s.id = m.star_id;
+
+---using a SELECT with a JOIN to show the names of each pair of couples, based on the data in the couples table */
+SELECT a.fullname, b.fullname FROM couples
+JOIN stars a
+ON couples.person1_id = a.id
+JOIN stars b
+ON couples.person2_id = b.id;
+
