@@ -2,7 +2,7 @@
 
 --
 #1. How many movie titles are there in the database? (movies only, not tv shows) 
-select COUNT(*) 
+SELECT COUNT(*) 
 FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
 WHERE TYPE='Movie';
 
