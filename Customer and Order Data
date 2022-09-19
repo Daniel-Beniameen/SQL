@@ -57,3 +57,10 @@ FROM BIT_DB.JanSales
 WHERE location LIKE '%NY%'
 GROUP BY location
 HAVING COUNT(orderID) > 2;
+
+--
+#10. How many of each type of headphone were sold in February?
+SELECT distinct product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE product LIKE '%headphone%'
+GROUP BY product;
