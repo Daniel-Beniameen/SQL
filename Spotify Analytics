@@ -2,7 +2,7 @@
 # https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?select=spotify_top50_2021.csv
 # I then created a table in SQLite to insert the Spotify data and perform Analytics on the data
 
-#Creating the table
+# Creating the table
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
@@ -24,7 +24,7 @@ duration_ms integer NOT NULL,
 time_signature integer NOT NULL 
 )
 
-# Then I inserted the Spotify Data .csv into the table
+# Then I inserted the Spotify Data .csv into the table in SQLite
 
 # Next, I ran some queries to analyse some data in the table
 
