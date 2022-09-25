@@ -1,0 +1,54 @@
+# In this project, I downloaded a Spotify csv file with data from the following webpage on Kaggle
+# https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?select=spotify_top50_2021.csv
+# I then created a table in SQLite to insert the Spotify data and perform Analytics on the data
+
+#Creating the table
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+# Then I inserted the Spotify Data .csv into the table
+
+# Next, I ran some queries to analyse some data in the table
+
+# First I found the average danceability by artist and track
+SELECT artist_name, track_name, AVG(danceability)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name, track_name;
+
+# Secondly I ran a query to find the top 10 artists based on popularity
+SELECT artist_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+LIMIT 10;
+
+# Thirdly, I determined what artist released the longest song
+SELECT artist_name, duration_ms
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms DESC
+LIMIT 1;
+
+# Finally, I queried the average danceability for the 10 most popular songs
+SELECT track_name, popularity, AVG(danceability)
+FROM BIT_DB.Spotifydata
+GROUP BY track_name
+ORDER BY popularity DESC
+LIMIT 10;
+
