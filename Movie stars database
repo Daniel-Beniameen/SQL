@@ -49,11 +49,13 @@ INSERT INTO couples(person1_id, person2_id) VALUES (12, 10);
 INSERT INTO couples(person1_id, person2_id) VALUES (9, 11);
 INSERT INTO couples(person1_id, person2_id) VALUES (15, 14);
 
---using a JOIN to display star's names with the movies they starred in
-SELECT s.fullname, m.movie FROM stars s
-JOIN Movies m ON s.id = m.star_id;
+-- In this query, I used a JOIN clause to display star's names with the movies they starred in
+SELECT s.fullname, m.movie 
+FROM stars s
+JOIN Movies m 
+ON s.id = m.star_id;
 
---using a SELECT with a JOIN to show the names of each pair of couples, based on the data in the couples table */
+-- In this query, I used a SELECT with a JOIN clause to show the names of each pair of couples, based on the data in the couples table
 SELECT a.fullname, b.fullname FROM couples
 JOIN stars a
 ON couples.person1_id = a.id
