@@ -1,3 +1,36 @@
 # In this dataset, I worked on a project which represents a digital media store and 
 # includes tables for artists, albums, media tracks, invoices, and customer.
 
+
+-- In this query, I used a simple SELECT statement to show customer information who are not in the US:
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE Country !='USA';
+
+
+-- For this query, I brought up the total Invoices in 2009
+SELECT COUNT(InvoiceId), InvoiceDate
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+
+-- Here, I wrote a query to show the invoices associated with each sales agent
+SELECT emp.LastName, emp.Firstname, inv.InvoiceId
+FROM chinook.Employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+
+-- For this query I created a CTE (Common Table Expression) to show the top salesman who have had
+-- a total sales figure of 100 or more, and labelled them as 'Top Salesman'
+WITH top_sales_CTE AS (
+SELECT ROUND(SUM(inv.Total)) AS total_sales, emp.FirstName, 
+emp.LastName
+FROM invoices inv
+JOIN customers cust ON inv.CustomerId = cust.CustomerId
+JOIN employees emp ON cust.SupportRepId = emp.EmployeeId
+GROUP BY emp.FirstName
+)
+SELECT FirstName, LastName, total_sales,
+'Top Salesman' AS Tag FROM average_sales_CTE
+WHERE total_sales>=100;
