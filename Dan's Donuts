@@ -1,4 +1,4 @@
---Create a donut store database
+--Designed a database for a fictional donut store (Dan’s Donuts) and used SQL queries to analyze statistics by product.
 
 CREATE TABLE dans_donuts (id INTEGER PRIMARY KEY, donut TEXT, calories INTEGER, price REAL, vegan_friendly TEXT);
 
